@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Preferred Time Slot Form</title>
+
+  
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+}
+
+.form-container{
+    min-width:310px;
+    max-width:420px;
+    width:90%;
+    margin:0 auto;
+    margin-top:50px;
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.form-title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.reqd-note{
+    text-align:right;
+    color:red;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    text-align:left;
+    margin-top:15px;
+    font-weight:500;
+}
+
+.reqd{
+    color:red;
+}
+
+
+
+input, select{
+    margin-top:6px;
+    padding:6px;
+    width:55px;
+    text-align:center;
+}
+
+input[type="text"]{
+    width:85%;
+}
+
+.time-block{
+    display:flex;
+    flex-direction:column;   /* stack From and To */
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+}
+
+.time-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+}
+
+.time-text{
+    font-size:14px;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome, Edge, Safari */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button{
+    margin-top:25px;
+    padding:10px 25px;
+    font-size:15px;
+    border:none;
+    background:#2c7be5;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1f66c1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+<div class="form-title">
+Python Online Program – Preferred Time Slot Form
+</div>
+
+<div class="reqd-note">
+* are required
+</div>
+
+<form name="pytiming">
+
+<label>
+Name <span class="reqd">*</span>
+</label>
+<input name="name" type="text" required>
+
+
+<label>
+WhatsApp Number <span class="reqd">*</span>
+</label>
+<input name="whatsapp" type="text" required>
+
+
+<label>
+Preferred Time - 1 <span class="reqd">*</span>
+</label>
+
+<div class="time-block">
+
+<div class="time-row">
+<span class="time-text">From</span>
+
+<input type="number" name="from_hrs_1" min="1" max="12" required> :
+<input type="number" name="from_min_1" min="0" max="59" required>
+
+<select name="from_ampm_1" required>
+<option value="">--</option>
+<option>AM</option>
+<option>PM</option>
+</select>
+</div>
+
+<div class="time-row">
+<span class="time-text">To</span>
+
+<input type="number" name="to_hrs_1" min="1" max="12" required> :
+<input type="number" name="to_min_1" min="0" max="59" required>
+
+<select name="to_ampm_1" required>
+<option value="">--</option>
+<option>AM</option>
+<option>PM</option>
+</select>
+</div>
+
+</div>
+
+
+<label>
+Preferred Time - 2
+</label>
+
+<div class="time-block">
+
+<div class="time-row">
+<span class="time-text">From</span>
+
+<input type="number" name="from_hrs_2" min="1" max="12"> :
+<input type="number" name="from_min_2" min="0" max="59">
+
+<select name="from_ampm_2">
+<option value="">--</option>
+<option>AM</option>
+<option>PM</option>
+</select>
+</div>
+
+<div class="time-row">
+<span class="time-text">To</span>
+
+<input type="number" name="to_hrs_2" min="1" max="12"> :
+<input type="number" name="to_min_2" min="0" max="59">
+
+<select name="to_ampm_2">
+<option value="">--</option>
+<option>AM</option>
+<option>PM</option>
+</select>
+</div>
+
+</div>
+
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+<script>
+ 
+const wscriptURL = ''
+const form = document.forms['pytiming']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(wscriptURL, { method: 'POST', body: new FormData(form)})
+
+      .then(response => console.log('Success!', response))
+
+
+     .catch(error => console.error('Error!', error.message))
+var win = window.open("url", "wndw",   "height=400,width=250,left=0,top=0")
+
+setTimeout(function () { win.close();}, 5500)
+
+
+document.wbsfrm.reset()
+
+
+
+});
+
+
+
+</script>
+
+</body>
+</html>
